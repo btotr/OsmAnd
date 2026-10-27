@@ -3542,6 +3542,7 @@ You need to activate the sensor so OsmAnd can find it.</string>
     <string name="osmand_settings_descr">Effective for the entire app</string>
     <string name="osmand_settings">OsmAnd settings</string>
     <string name="copy_from_other_profile">Copy from another profile</string>
+<<<<<<< HEAD
 	<string name="training_settings_descr">Set rider body weight and FTP for training features</string>
 	<string name="training">Training</string>
 	<string name="training_desc">Training widgets for cycling metrics</string>
@@ -3552,6 +3553,10 @@ You need to activate the sensor so OsmAnd can find it.</string>
 	<string name="map_widget_ftp_desc">Shows your current Functional Threshold Power setting</string>
 	<string name="map_widget_np">Normalized power</string>
 	<string name="map_widget_np_desc">Shows the normalized power</string>
+=======
+	<string name="map_widget_if">Intensity Factor</string>
+	<string name="map_widget_if_desc">Shows your current Intensity Factor</string>
+>>>>>>> add-IF-Widget
     <string name="turn_screen_on">Turn screen on</string>
     <string name="map_during_navigation_info">Map during navigation</string>
     <string name="map_during_navigation">Map during navigation</string>

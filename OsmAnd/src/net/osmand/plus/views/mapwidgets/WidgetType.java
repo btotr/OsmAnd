@@ -139,6 +139,7 @@ public enum WidgetType {
 	FTP("ftp", R.string.map_widget_ftp, R.string.map_widget_ftp_desc, R.drawable.widget_sensor_bicycle_power_day, R.drawable.widget_sensor_bicycle_power_night, 0, TRAINING, RIGHT),
 	NP("np", R.string.map_widget_np, R.string.map_widget_np_desc, R.drawable.widget_sensor_bicycle_power_day, R.drawable.widget_sensor_bicycle_power_night, 0, TRAINING, RIGHT),
 
+	IF("if", R.string.map_widget_if, R.string.map_widget_if_desc, R.drawable.widget_sensor_bicycle_power_day, R.drawable.widget_sensor_bicycle_power_night, 0, TRAINING, RIGHT),
 	WEATHER_TEMPERATURE_WIDGET("weather_temp", R.string.map_settings_weather_temp, R.string.temperature_widget_desc, R.drawable.widget_weather_temperature_day, R.drawable.widget_weather_temperature_night, 0, WEATHER, RIGHT),
 	WEATHER_PRECIPITATION_WIDGET("weather_precip", R.string.map_settings_weather_precip, R.string.precipitation_widget_desc, R.drawable.widget_weather_precipitation_day, R.drawable.widget_weather_precipitation_night, 0, WEATHER, RIGHT),
 	WEATHER_WIND_WIDGET("weather_wind", R.string.map_settings_weather_wind, R.string.wind_widget_desc, R.drawable.widget_weather_wind_day, R.drawable.widget_weather_wind_night, 0, WEATHER, RIGHT),

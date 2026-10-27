@@ -12,6 +12,8 @@ import static net.osmand.plus.views.mapwidgets.WidgetType.DISTANCE_TO_DESTINATIO
 import static net.osmand.plus.views.mapwidgets.WidgetType.ELEVATION_PROFILE;
 import static net.osmand.plus.views.mapwidgets.WidgetType.FTP;
 import static net.osmand.plus.views.mapwidgets.WidgetType.GLIDE_AVERAGE;
+import static net.osmand.plus.views.mapwidgets.WidgetType.IF;
+import static net.osmand.plus.views.mapwidgets.WidgetType.NP;
 import static net.osmand.plus.views.mapwidgets.WidgetType.GLIDE_TARGET;
 import static net.osmand.plus.views.mapwidgets.WidgetType.GPS_INFO;
 import static net.osmand.plus.views.mapwidgets.WidgetType.INTERMEDIATE_DESTINATION;
@@ -131,6 +133,7 @@ public class WidgetsInitializer {
 		addWidgetInfo(GLIDE_TARGET);
 		addWidgetInfo(GLIDE_AVERAGE);
 		addWidgetInfo(FTP);
+		addWidgetInfo(IF);
 	}
 
 	private void addWidgetInfo(@NonNull WidgetType widgetType) {
