@@ -39,11 +39,8 @@ import static net.osmand.plus.views.mapwidgets.WidgetType.STREET_NAME;
 import static net.osmand.plus.views.mapwidgets.WidgetType.SUNRISE;
 import static net.osmand.plus.views.mapwidgets.WidgetType.SUNSET;
 import static net.osmand.plus.views.mapwidgets.WidgetType.SUN_POSITION;
-<<<<<<< HEAD
 import static net.osmand.plus.views.mapwidgets.WidgetType.FTP;
-=======
 import static net.osmand.plus.views.mapwidgets.WidgetType.IF;
->>>>>>> add-IF-Widget
 import static net.osmand.plus.views.mapwidgets.WidgetType.TIME_TO_DESTINATION;
 import static net.osmand.plus.views.mapwidgets.WidgetType.TIME_TO_INTERMEDIATE;
 import static net.osmand.plus.views.mapwidgets.WidgetType.TRUE_BEARING;
@@ -151,11 +148,8 @@ public class WidgetsAvailabilityHelper {
 		regWidgetAvailability(TRUE_BEARING, all);
 		regWidgetAvailability(RADIUS_RULER, all);
 		regWidgetAvailability(CURRENT_TIME, all);
-<<<<<<< HEAD
 		regWidgetAvailability(WidgetType.FTP, all);
-=======
 		regWidgetAvailability(WidgetType.IF, all);
->>>>>>> add-IF-Widget
 	}
 
 	@NonNull
