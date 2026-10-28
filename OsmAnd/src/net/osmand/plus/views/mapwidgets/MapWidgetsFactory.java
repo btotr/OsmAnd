@@ -114,6 +114,8 @@ public class MapWidgetsFactory {
 				return new NPWidget(mapActivity, customId, panel);
 			case IF:
 				return new IFWidget(mapActivity, customId, panel);
+			case POWER_ZONE:
+				return new PowerZoneWidget(mapActivity, customId, panel);
 			case AIDL_WIDGET:
 				return app.getAidlApi().askCreateExternalWidget(mapActivity, customId, panel);
 			default:

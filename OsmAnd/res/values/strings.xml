@@ -3541,6 +3541,8 @@ You need to activate the sensor so OsmAnd can find it.</string>
     <string name="reset_to_default">Reset to default</string>
     <string name="osmand_settings_descr">Effective for the entire app</string>
     <string name="osmand_settings">OsmAnd settings</string>
+    <string name="map_widget_power_zone">Power Zone</string>
+	<string name="map_widget_power_zone_desc">Shows the current power zone</string>
     <string name="copy_from_other_profile">Copy from another profile</string>
 	<string name="training_settings_descr">Set rider body weight and FTP for training features</string>
 	<string name="training">Training</string>

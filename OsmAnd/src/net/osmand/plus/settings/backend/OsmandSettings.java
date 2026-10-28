@@ -2205,7 +2205,9 @@ public class OsmandSettings {
 	public final OsmandPreference<Boolean> ANIMATE_MY_LOCATION = new BooleanPreference(this, "animate_my_location", true).makeProfile().cache();
 
 	public final OsmandPreference<String> EXTERNAL_INPUT_DEVICE = new StringPreference(this, "selected_external_input_device", KeyboardDeviceProfile.ID).makeProfile();
-	public final CommonPreference<String> CUSTOM_EXTERNAL_INPUT_DEVICES = new StringPreference(this, "custom_external_input_devices", "").makeProfile();
+	public final CommonPreference<String> CUSTOM_EXTERNAL_INPUT_DEVICES = new StringPreference(this, "custom_external_input_devices_global", "").makeGlobal().makeShared();
+	// Per-profile list used before custom devices became global, still read from old exports and old clients
+	public final CommonPreference<String> LEGACY_CUSTOM_EXTERNAL_INPUT_DEVICES = new StringPreference(this, "custom_external_input_devices", "").makeProfile();
 	public final OsmandPreference<Boolean> EXTERNAL_INPUT_DEVICE_ENABLED = new BooleanPreference(this, "external_input_device_enabled", true).makeProfile();
 
 	public final OsmandPreference<Boolean> ROUTE_MAP_MARKERS_START_MY_LOC = new BooleanPreference(this, "route_map_markers_start_my_loc", false).makeGlobal().makeShared().cache();
@@ -2258,7 +2260,12 @@ public class OsmandSettings {
 	public String getTileSourceTitle(@NonNull String fileName) {
 		if (fileName.endsWith(SQLITE_EXT)) {
 			ITileSource tileSource = getTileSourceByName(fileName, false);
-			return getTileSourceTitle(tileSource, fileName);
+			String title = getTileSourceTitle(tileSource, fileName);
+			if (tileSource instanceof SQLiteTileSource) {
+				// Created only to read the title, nothing else closes its database
+				((SQLiteTileSource) tileSource).closeConnection();
+			}
+			return title;
 		}
 		return fileName;
 	}
