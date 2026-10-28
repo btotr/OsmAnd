@@ -53,5 +53,5 @@
   <path
       android:pathData="M3,13 H7 V14.4 H5.7 V19.6 H7 V21 H3 V19.6 H4.3 V14.4 H3 Z M8.6,13 H12.6 V14.4 H10 V16.8 H11.8 V18.2 H10 V21 H8.6 Z"
       android:fillColor="#FFC107"
-      android:fillType="#595959"/>
+      android:fillType="evenOdd"/>
 </vector>
