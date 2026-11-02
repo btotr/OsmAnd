@@ -980,8 +980,8 @@ public class GPXItemPagerAdapter extends PagerAdapter implements CustomTabProvid
 		averagePowerText.setText(OsmAndFormatter.getFormattedPower((float) avgPower, app));
 		maxPowerText.setText(OsmAndFormatter.getFormattedPower((float) maxPower, app));
 
-		// Calculate Intensity Factor (assuming FTP of 250W as default)
-		float ftp = 250f; // Default FTP value
+		// Calculate Intensity Factor
+		float ftp = settings.TRAINING_FTP.get();
 		float intensityFactor = (float) normalizedPower > 0 ? (float) (normalizedPower / ftp) : 0f;
 		intensityFactorText.setText(String.format("%.2f", intensityFactor));
 
