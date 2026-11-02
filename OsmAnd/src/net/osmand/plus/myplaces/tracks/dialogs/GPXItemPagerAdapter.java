@@ -968,6 +968,8 @@ public class GPXItemPagerAdapter extends PagerAdapter implements CustomTabProvid
 				(Double) analysis.getGpxParameter(net.osmand.shared.gpx.GpxParameter.AVG_SENSOR_POWER) : 0.0;
 		int maxPower = analysis.getGpxParameter(net.osmand.shared.gpx.GpxParameter.MAX_SENSOR_POWER) != null ?
 				(Integer) analysis.getGpxParameter(net.osmand.shared.gpx.GpxParameter.MAX_SENSOR_POWER) : 0;
+		double normalizedPower = analysis.getGpxParameter(net.osmand.shared.gpx.GpxParameter.NORMALIZED_POWER) != null ?
+				(Double) analysis.getGpxParameter(net.osmand.shared.gpx.GpxParameter.NORMALIZED_POWER) : avgPower;
 		long timeSpan = analysis.getTimeSpan();
 
 		TextView averagePowerText = container.findViewById(R.id.average_text);
@@ -980,14 +982,12 @@ public class GPXItemPagerAdapter extends PagerAdapter implements CustomTabProvid
 
 		// Calculate Intensity Factor (assuming FTP of 250W as default)
 		float ftp = 250f; // Default FTP value
-		float intensityFactor = avgPower > 0 ? (float) (avgPower / ftp) : 0f;
+		float intensityFactor = (float) normalizedPower > 0 ? (float) (normalizedPower / ftp) : 0f;
 		intensityFactorText.setText(String.format("%.2f", intensityFactor));
 
-		// Calculate TSS (Training Stress Score)
+		// Calculate TSS (Training Stress Score) using the standard formula
 		// TSS = (time in seconds * Normalized Power * Intensity Factor) / (FTP * 3600) * 100
-		// For simplicity, we use avgPower as approximation for NP
-		float normalizedPower = (float) avgPower; // Simplified: using avg power as NP
-		float tss = (timeSpan / 1000f) * normalizedPower * intensityFactor / (ftp * 3600f) * 100f;
+		float tss = (timeSpan / 1000f) * (float) normalizedPower * intensityFactor / (ftp * 3600f) * 100f;
 		tssText.setText(String.format("%.0f", tss));
 	}
 
