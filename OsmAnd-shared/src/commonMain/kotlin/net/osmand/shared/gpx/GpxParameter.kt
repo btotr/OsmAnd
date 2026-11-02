@@ -69,6 +69,7 @@ enum class GpxParameter(
 	AVG_SENSOR_SPEED("avgSensorSpeed", "double", Double::class, 0.0, true),
 	MAX_SENSOR_POWER("maxSensorPower", "int", Int::class, 0, true),
 	AVG_SENSOR_POWER("avgSensorPower", "double", Double::class, 0.0, true),
+	NORMALIZED_POWER("normalizedPower", "double", Double::class, 0.0, true),
 	MAX_SENSOR_CADENCE("maxSensorCadence", "double", Double::class, 0.0, true),
 	AVG_SENSOR_CADENCE("avgSensorCadence", "double", Double::class, 0.0, true),
 	MAX_SENSOR_HEART_RATE("maxSensorHr", "int", Int::class, 0, true),

@@ -157,6 +157,10 @@ class GpxTrackAnalysis {
 		get() = getGpxParameter(GpxParameter.MAX_SENSOR_POWER) as Int
 		set(value) = setGpxParameter(GpxParameter.MAX_SENSOR_POWER, value)
 
+	var normalizedPower: Double
+		get() = getGpxParameter(GpxParameter.NORMALIZED_POWER) as? Double ?: 0.0
+		set(value) = setGpxParameter(GpxParameter.NORMALIZED_POWER, value)
+
 	var totalTracks: Int
 		get() = getGpxParameter(GpxParameter.TOTAL_TRACKS) as Int
 		set(value) = setGpxParameter(GpxParameter.TOTAL_TRACKS, value)
@@ -450,6 +454,8 @@ class GpxTrackAnalysis {
 		var _maxSensorHr = 0
 		var _maxSensorTemperature = 0
 		var _maxSensorPower = 0
+		var _normalizedPowerSum = 0.0
+		var _normalizedPowerCount = 0
 		var _maxObdEngineLoad = maxObdEngineLoad
 		var _maxObdThrottlePosition = maxObdThrottlePosition
 		var _maxObdEngineRpm = maxObdEngineRpm
@@ -684,6 +690,8 @@ class GpxTrackAnalysis {
 					_maxSensorPower = maxOf(attributes.bikePower.toInt(), _maxSensorPower)
 					sensorPowerCount++
 					totalSensorPowerSum += attributes.bikePower
+					_normalizedPowerSum += Math.pow(attributes.bikePower.toDouble(), 4.0)
+					_normalizedPowerCount++
 				}
 
 				val engineLoad = attributes.engineLoad
@@ -810,6 +818,12 @@ class GpxTrackAnalysis {
 		maxSensorHr = _maxSensorHr
 		maxSensorTemperature = _maxSensorTemperature
 		maxSensorPower = _maxSensorPower
+		if (_normalizedPowerCount > 0) {
+			val avgPowerFourth = _normalizedPowerSum / _normalizedPowerCount
+			normalizedPower = Math.pow(avgPowerFourth, 0.25)
+		} else {
+			normalizedPower = 0.0
+		}
 		maxObdEngineLoad = _maxObdEngineLoad
 		maxObdThrottlePosition = _maxObdThrottlePosition
 		maxObdEngineRpm = _maxObdEngineRpm
