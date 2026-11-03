@@ -906,7 +906,7 @@ public class GPXItemPagerAdapter extends PagerAdapter implements CustomTabProvid
 				} else if (tabType == GPX_TAB_ITEM_SPEED) {
 					updateSpeedTabInfo(view, app, analysis, joinSegments, generalTrack);
 				} else if (tabType == GPX_TAB_ITEM_POWER) {
-					updatePowerTabInfo(view, app, analysis);
+					updatePowerTabInfo(view, app, analysis, app.getSettings());
 				}
 			}
 		}
@@ -963,7 +963,7 @@ public class GPXItemPagerAdapter extends PagerAdapter implements CustomTabProvid
 	}
 
 	public static void updatePowerTabInfo(@NonNull View container, @NonNull OsmandApplication app,
-	                                      @NonNull GpxTrackAnalysis analysis) {
+	                                      @NonNull GpxTrackAnalysis analysis, @NonNull OsmandSettings settings) {
 		double avgPower = analysis.getGpxParameter(net.osmand.shared.gpx.GpxParameter.AVG_SENSOR_POWER) != null ?
 				(Double) analysis.getGpxParameter(net.osmand.shared.gpx.GpxParameter.AVG_SENSOR_POWER) : 0.0;
 		int maxPower = analysis.getGpxParameter(net.osmand.shared.gpx.GpxParameter.MAX_SENSOR_POWER) != null ?
