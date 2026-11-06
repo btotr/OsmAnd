@@ -80,6 +80,15 @@ public class NormalizedPowerCalculator {
 	/** Timestamp when the ride started, in milliseconds. */
 	private long rideStartTime = 0;
 
+	/** Maximum power seen during the ride. */
+	private float maxPower = 0;
+
+	/** Ride-wide running sum of power for average calculation. */
+	private double sumPower = 0;
+
+	/** Ride-wide count of power samples for average calculation. */
+	private long powerSampleCount = 0;
+
 	private static class PowerSample {
 		final long timestamp;
 		final float power;
@@ -160,6 +169,9 @@ public class NormalizedPowerCalculator {
 			rollingAvgCount = 0;
 			lastSampleTime = 0;
 			rideStartTime = System.currentTimeMillis();
+			maxPower = 0;
+			sumPower = 0;
+			powerSampleCount = 0;
 		}
 	}
 
@@ -174,6 +186,31 @@ public class NormalizedPowerCalculator {
 				return 0f;
 			}
 			return (float) (windowPowerSum / windowSamples.size());
+		}
+	}
+
+	/**
+	 * Returns the maximum power seen during the ride.
+	 * 
+	 * @return the maximum power in watts, or 0 if no data
+	 */
+	public float getMaxPower() {
+		synchronized (this) {
+			return maxPower;
+		}
+	}
+
+	/**
+	 * Returns the average power for the ride.
+	 * 
+	 * @return the average power in watts, or 0 if not enough data
+	 */
+	public float getAveragePower() {
+		synchronized (this) {
+			if (powerSampleCount == 0) {
+				return 0f;
+			}
+			return (float) (sumPower / powerSampleCount);
 		}
 	}
 
@@ -293,6 +330,15 @@ public class NormalizedPowerCalculator {
 		synchronized (this) {
 			windowSamples.addLast(new PowerSample(now, power));
 			windowPowerSum += power;
+
+			// Update max power
+			if (power > maxPower) {
+				maxPower = power;
+			}
+
+			// Update average power
+			sumPower += power;
+			powerSampleCount++;
 
 			long cutoff = now - NP_WINDOW_MS;
 			while (!windowSamples.isEmpty() && windowSamples.peekFirst().timestamp < cutoff) {
