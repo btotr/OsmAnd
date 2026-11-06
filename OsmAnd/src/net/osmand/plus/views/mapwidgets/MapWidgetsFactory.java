@@ -111,6 +111,8 @@ public class MapWidgetsFactory {
 				return new ElevationProfileWidget(mapActivity, customId, panel);
 			case CLIMBS_COUNT:
 				return new ClimbsCountWidget(mapActivity, widgetType, customId, panel);
+			case AVERAGE_POWER:
+				return new AveragePowerWidget(mapActivity, customId, panel);
 			case AIDL_WIDGET:
 				return app.getAidlApi().askCreateExternalWidget(mapActivity, customId, panel);
 			default:
