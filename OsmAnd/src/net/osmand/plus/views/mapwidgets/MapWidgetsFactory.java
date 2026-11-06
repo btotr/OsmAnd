@@ -14,6 +14,7 @@ import net.osmand.plus.views.mapwidgets.widgets.BearingWidget.BearingType;
 import net.osmand.plus.views.mapwidgets.widgets.DistanceToPointWidget.DistanceToDestinationWidget;
 import net.osmand.plus.views.mapwidgets.widgets.DistanceToPointWidget.DistanceToIntermediateDestinationWidget;
 import net.osmand.plus.views.mapwidgets.widgets.routeinfo.RouteInfoWidget;
+import net.osmand.plus.views.mapwidgets.widgets.ClimbsCountWidget;
 import net.osmand.plus.views.mapwidgets.widgetstates.GlideAverageWidgetState;
 import net.osmand.plus.views.mapwidgets.widgetstates.GlideTargetWidgetState;
 import net.osmand.plus.views.mapwidgets.widgetstates.MapMarkerSideWidgetState;
@@ -116,6 +117,10 @@ public class MapWidgetsFactory {
 				return new IFWidget(mapActivity, customId, panel);
 			case POWER_ZONE:
 				return new PowerZoneWidget(mapActivity, customId, panel);
+			case CLIMBS_COUNT:
+				return new ClimbsCountWidget(mapActivity, widgetType, customId, panel);
+			case MAX_POWER:
+				return new MaxPowerWidget(mapActivity, customId, panel);
 			case AIDL_WIDGET:
 				return app.getAidlApi().askCreateExternalWidget(mapActivity, customId, panel);
 			default:
