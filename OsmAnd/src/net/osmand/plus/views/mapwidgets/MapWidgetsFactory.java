@@ -123,6 +123,8 @@ public class MapWidgetsFactory {
 				return new MaxPowerWidget(mapActivity, customId, panel);
 			case AVERAGE_POWER:
 				return new AveragePowerWidget(mapActivity, customId, panel);
+			case TSS:
+				return new TSSWidget(mapActivity, customId, panel);
 			case AIDL_WIDGET:
 				return app.getAidlApi().askCreateExternalWidget(mapActivity, customId, panel);
 			default:
