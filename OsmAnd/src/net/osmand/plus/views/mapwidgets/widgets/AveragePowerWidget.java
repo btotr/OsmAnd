@@ -37,13 +37,14 @@ public class AveragePowerWidget extends SimpleWidget {
 			cachedAveragePower = averagePower;
 			float currentAveragePower = powerCalculator.getAveragePower();
 			if (currentAveragePower > 0) {
-				FormattedValue formattedPower = OsmAndFormatter.getFormattedPowerValue(currentAveragePower, app);
-				setText(formattedPower.value, formattedPower.unit);
+				// Round average power to 1 decimal place
+				String formattedValue = String.format("%.1f", currentAveragePower);
+				setText(formattedValue, app.getString(R.string.power_watts_unit));
 			} else {
 				// Keep the last shown value if sensor is temporarily unavailable
 				if (cachedAveragePower > 0) {
-					FormattedValue formattedPower = OsmAndFormatter.getFormattedPowerValue(cachedAveragePower, app);
-					setText(formattedPower.value, formattedPower.unit);
+					String formattedValue = String.format("%.1f", cachedAveragePower);
+					setText(formattedValue, app.getString(R.string.power_watts_unit));
 				} else {
 					setText(NO_VALUE, null);
 				}
